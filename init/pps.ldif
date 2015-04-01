@@ -1,0 +1,89 @@
+dn: cn=pps,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: pps
+olcAttributeTypes: {0}( 1.3.6.1.4.1.35650.1.1.1 NAME 'ppsBirthDate' EQUALITY g
+ eneralizedTimeMatch ORDERING generalizedTimeOrderingMatch SYNTAX 1.3.6.1.4.1.
+ 1466.115.121.1.24 SINGLE-VALUE )
+olcAttributeTypes: {1}( 1.3.6.1.4.1.35650.1.1.2 NAME 'ppsGender' EQUALITY inte
+ gerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 S
+ INGLE-VALUE )
+olcAttributeTypes: {2}( 1.3.6.1.4.1.35650.1.1.3 NAME 'ppsJoining' EQUALITY gen
+ eralizedTimeMatch ORDERING generalizedTimeOrderingMatch SYNTAX 1.3.6.1.4.1.14
+ 66.115.121.1.24 )
+olcAttributeTypes: {3}( 1.3.6.1.4.1.35650.1.1.4 NAME 'ppsLeaving' SUP ppsJoini
+ ng )
+olcAttributeTypes: {4}( 1.3.6.1.4.1.35650.1.1.5 NAME 'ppsPreferredNotification
+ Method' EQUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.
+ 1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {5}( 1.3.6.1.4.1.35650.1.1.6 NAME 'ppsContributionClass' DE
+ SC 'The member pays a reduced contribution' EQUALITY integerMatch ORDERING in
+ tegerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {6}( 1.3.6.1.4.1.35650.1.1.7 NAME 'ppsVotingRightUntil' SUP
+  ppsBirthDate )
+olcAttributeTypes: {7}( 1.3.6.1.4.1.35650.1.1.8 NAME 'ppsPivoteCertID' SUP des
+ cription )
+olcAttributeTypes: {8}( 1.3.6.1.4.1.35650.1.1.9 NAME 'ppsPivoteCertValidUntil'
+  SUP ppsBirthDate )
+olcAttributeTypes: {9}( 1.3.6.1.4.1.35650.1.1.10 NAME 'ppsOrdering' DESC 'Orde
+ r in which groups and roles appear' EQUALITY integerMatch ORDERING integerOrd
+ eringMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {10}( 1.3.6.1.4.1.35650.1.1.11 NAME 'ppsDisplayNameGerman' 
+ SUP description )
+olcAttributeTypes: {11}( 1.3.6.1.4.1.35650.1.1.12 NAME 'ppsWebsite' SUP descri
+ ption )
+olcAttributeTypes: {12}( 1.3.6.1.4.1.35650.1.1.13 NAME 'ppsNewsLetterSelect' E
+ QUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.11
+ 5.121.1.27 )
+olcAttributeTypes: {13}( 1.3.6.1.4.1.35650.1.1.15 NAME 'ppsTitle' SUP descript
+ ion SINGLE-VALUE )
+olcAttributeTypes: {14}( 1.3.6.1.4.1.35650.1.1.16 NAME 'ppsText' SUP descripti
+ on SINGLE-VALUE )
+olcAttributeTypes: {15}( 1.3.6.1.4.1.35650.1.1.17 NAME 'ppsSentDate' SUP ppsBi
+ rthDate SINGLE-VALUE )
+olcAttributeTypes: {16}( 1.3.6.1.4.1.35650.1.1.18 NAME 'ppsData' SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.5 SINGLE-VALUE )
+olcAttributeTypes: {17}( 1.3.6.1.4.1.35650.1.1.19 NAME 'ppsFilename' SUP descr
+ iption SINGLE-VALUE )
+olcAttributeTypes: {18}( 1.3.6.1.4.1.35650.1.1.20 NAME 'ppsSectionSelect' SUP 
+ description )
+olcAttributeTypes: {19}( 1.3.6.1.4.1.35650.1.1.21 NAME 'ppsPiVoteGroupId' DESC
+  'Group Id in Pi-Vote' EQUALITY integerMatch ORDERING integerOrderingMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: {20}( 1.3.6.1.4.1.35650.1.1.22 NAME 'ppsAlternateMail' DESC
+  'Alternate mail address' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5Sub
+ stringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
+olcAttributeTypes: {21}( 1.3.6.1.4.1.35650.1.1.23 NAME 'ppsMemberOf' DESC 'mem
+ berships' SUP distinguishedName )
+olcObjectClasses: {0}( 1.3.6.1.4.1.4203.1.2.1 NAME 'ppsPerson' DESC 'piratenpa
+ rtei.ch Person' SUP top STRUCTURAL MUST ( uniqueIdentifier $ uid $ employeeTy
+ pe ) MAY ( c $ cn $ description $ employeeNumber $ gn $ info $ l $ mail $ mob
+ ile $ o $ photo $ postalCode $ ppsBirthDate $ ppsContributionClass $ ppsGende
+ r $ ppsJoining $ ppsLeaving $ ppsPivoteCertID $ ppsPivoteCertValidUntil $ pps
+ PreferredNotificationMethod $ ppsVotingRightUntil $ preferredLanguage $ sn $ 
+ st $ street $ telephoneNumber $ title $ userPassword $ jpegPhoto $ ppsNewsLet
+ terSelect $ ppsAlternateMail $ ppsMemberOf ) )
+olcObjectClasses: {1}( 1.3.6.1.4.1.4203.1.2.8 NAME 'ppsGroup' DESC 'piratenpar
+ tei.ch Group' SUP groupOfNames STRUCTURAL MUST cn MAY ( businessCategory $ de
+ scription $ labeledURI $ member $ owner $ mail $ ppsOrdering $ ppsDisplayName
+ German $ ppsWebsite ) )
+olcObjectClasses: {2}( 1.3.6.1.4.1.4203.1.2.3 NAME 'ppsRole' DESC 'piratenpart
+ ei.ch Role' SUP top STRUCTURAL MUST cn MAY ( description $ mail $ labeledURI 
+ $ roleOccupant $ ppsOrdering $ ppsDisplayNameGerman ) )
+olcObjectClasses: {3}( 1.3.6.1.4.1.4203.1.2.4 NAME 'ppsContainer' DESC 'pirate
+ npartei.ch Container' SUP top STRUCTURAL MUST dc MAY description )
+olcObjectClasses: {4}( 1.3.6.1.4.1.4203.1.2.5 NAME 'ppsSection' DESC 'piratenp
+ artei.ch Section' SUP top STRUCTURAL MUST st MAY ( description $ l $ labeledU
+ RI $ mail $ postalCode $ street $ ppsOrdering $ ppsDisplayNameGerman $ ppsWeb
+ site $ jpegPhoto $ ppsPiVoteGroupId ) )
+olcObjectClasses: {5}( 1.3.6.1.4.1.4203.1.2.6 NAME 'ppsUniqueStorage' DESC 'Co
+ ntainer to store unique numbers' SUP top STRUCTURAL MUST ( dc $ uidNumber ) )
+olcObjectClasses: {6}( 1.3.6.1.4.1.4203.1.2.7 NAME 'ppsOrganization' DESC 'pir
+ atenpartei.ch Organization' SUP top AUXILIARY MAY ( ppsDisplayNameGerman $ pp
+ sWebsite $ jpegPhoto $ ppsPiVoteGroupId ) )
+olcObjectClasses: {7}( 1.3.6.1.4.1.4203.1.2.9 NAME 'ppsArticle' DESC 'Newslett
+ er Article' SUP top STRUCTURAL MUST ( uniqueIdentifier $ ppsTitle $ ppsText $
+  ppsNewsletterSelect $ preferredLanguage $ ppsSectionSelect $ ppsOrdering ) M
+ AY ppsSentDate )
+olcObjectClasses: {8}( 1.3.6.1.4.1.4203.1.2.10 NAME 'ppsAttachement' DESC 'Att
+ achment to Newsletter Article' SUP top STRUCTURAL MUST ( uniqueIdentifier $ p
+ psFilename $ ppsData ) )
